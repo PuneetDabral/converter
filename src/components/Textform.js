@@ -5,27 +5,34 @@ export default function Textform(props) {
       //  console.log("upper click is fire" + text);
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("converted to Upper case!", "success");
     }
 
     const handleloClick = () =>{
       //  console.log("upper click is fire" + text);
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("converted to Lower case!", "success");
     }
 
     const handleclearClick = () =>{
         setText('');
+        props.showAlert("Text is clear!", "success");
+      
     }
 
     const handlecopyClick =() =>{
       var text = document.getElementById('box')
       text.select();
       navigator.clipboard.writeText(text.value);
+      props.showAlert("copied to clipboard!", "success");
+
     }
 
     const handleExtraSpaces = () =>{
       let newText = text.split(/[ ]+/);
       setText(newText.join(" "));
+      props.showAlert("remove extra spaces!", "success");
 
     }
 
@@ -56,7 +63,7 @@ export default function Textform(props) {
         <div className="container my-3" style={{color: props.mode===`dark`?`white`:`#042743` }}>
           <h2>Your text summary</h2>
            <p>{text.split (" ").length}words and {text.length} caracters</p>  {/*text.split gives the arrey like word */}
-          <p>{0.8*text.split (" ").length} minutes read</p>
+          <p>{0.8*text.split (" ").length} sec read</p>
           <h2>privew</h2>
           <p>{text.length>0?text:"enter something in the text box above to  privew here "}</p>
         </div>
