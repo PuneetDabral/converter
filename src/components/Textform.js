@@ -54,18 +54,18 @@ export default function Textform(props) {
                          
                          <textarea className="form-control"  value= {text} style={{background: props.mode===`dark`?`grey`:`white`, color:props.mode===`dark`?`white`:`#042743`}} onChange={handleOnChange} id="box" rows="8"></textarea>
                    </div>
-                   <button className="btn btn-primary mx-1" onClick={handleUpClick}>convert to upper case </button>
-                   <button className="btn btn-primary mx-1" onClick={handleloClick}>convert to lower case </button>                  
-                   <button className="btn btn-primary mx-1" onClick={handlecopyClick}>copy text </button>
-                   <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>remove space </button>
-                   <button className="btn btn-danger mx-1" onClick={handleclearClick}>clear text </button>
+                   <button disabled={text.length===0}  className="btn btn-primary mx-1 my-1" onClick={handleloClick}>convert to lower case </button>                  
+                   <button disabled={text.length===0}  className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>convert to upper case </button>
+                   <button disabled={text.length===0}  className="btn btn-primary mx-1 my-1" onClick={handlecopyClick}>copy text </button>
+                   <button disabled={text.length===0}  className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>remove space </button>
+                   <button disabled={text.length===0}  className="btn btn-danger mx-1 my-1" onClick={handleclearClick}>clear text </button>
         </div>
         <div className="container my-3" style={{color: props.mode===`dark`?`white`:`#042743` }}>
           <h2>Your text summary</h2>
-           <p>{text.split (" ").length}words and {text.length} caracters</p>  {/*text.split gives the arrey like word */}
-          <p>{0.8*text.split (" ").length} sec read</p>
+           <p>{text.split (" ").filter((element)=>{  return element.length!==0}).length}words and {text.length} caracters</p>  {/*text.split gives the arrey like word */}
+          <p>{0.008*text.split (" ").length} minute read</p>
           <h2>privew</h2>
-          <p>{text.length>0?text:"enter something in the text box above to  privew here "}</p>
+          <p>{text.length>0?text:"nothing to privew!! "}</p>
         </div>
         </>
     )
