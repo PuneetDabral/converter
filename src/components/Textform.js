@@ -65,7 +65,7 @@ export default function Textform(props) {
            <p>{text.split (/\s+/).filter((element)=>{  return element.length!==0}).length} words and {text.length} caracters</p>  {/*text.split gives the arrey like word */}
           <p>{0.008*text.split (" ").length} minute read</p>
           <h2>Preview</h2>
-          <p>{text.length>0?text:"nothing to privew!! "}</p>
+          <p>{text.length>0?text:"nothing to preview!! "}</p>
         </div>
         </>
     )
